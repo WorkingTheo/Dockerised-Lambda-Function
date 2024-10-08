@@ -6,5 +6,5 @@ RUN apt-get update
 RUN apt-get install zip
 RUN cd src && npm install && zip -r lambdas.zip . 
 
-FROM localstack/localstack:2.3.2
+FROM localstack/localstack
 COPY --from=lambda /usr/src/src/lambdas.zip ./lambdas.zip

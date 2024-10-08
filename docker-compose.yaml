@@ -18,8 +18,6 @@ services:
       - LOCALSTACK_HOST=localstack
       - LAMBDA_EXECUTION=local
     volumes:
-      # - ./localSetup.sh:/docker-entrypoint-initaws.d/create-resources.sh
-      - ./localstack:/docker-entrypoint-initaws.d
-      # - ./localSetup.sh:/etc/localstack/init/ready.d/init-aws.sh
+      - ./localSetup.sh:/etc/localstack/init/ready.d/init-aws.sh
       - ./admin-policy.json:/opt/code/localstack/admin-policy.json
       - /var/run/docker.sock:/var/run/docker.sock

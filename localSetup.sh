@@ -18,6 +18,18 @@ awslocal lambda create-function \
 
 echo "DONE creating lambda function!"
 
+# wait for function to be active
+echo "Waiting for function to be active..." 
+while true; do 
+    status=$(awslocal lambda get-function --function-name test --query 'Configuration.State' --output text)
+    if [[ "$status" == "Active" ]]; then
+        echo "Lambda function is active."
+        break
+    fi
+    echo "Current status: $status. Waiting..."
+    sleep 2
+done
+
 echo "------------------------------"
 
 echo "Create function url"

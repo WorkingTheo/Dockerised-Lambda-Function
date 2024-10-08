@@ -10,7 +10,7 @@ echo "...above works"
 
 awslocal lambda create-function \
   --function-name test \
-  --runtime nodejs20.x \
+  --runtime nodejs18.x \
   --timeout 10 \
   --zip-file fileb://lambdas.zip \
   --handler handler.handler \
@@ -19,7 +19,8 @@ awslocal lambda create-function \
 echo "DONE creating lambda function!"
 
 echo "------------------------------"
-# echo "Create function url"
-# aws lambda create-function-url-config \
-#   --function-name test \
-#   --auth-type NONE
+
+echo "Create function url"
+awslocal lambda create-function-url-config \
+  --function-name test \
+  --auth-type NONE
